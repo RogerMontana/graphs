@@ -2,9 +2,6 @@ package graph;
 
 import java.util.List;
 
-/**
- * Created by artem on 25.07.16.
- */
 public abstract class Graph {
 
     private int numVertices;
@@ -29,6 +26,8 @@ public abstract class Graph {
     }
 
     public abstract void implementAddVertex();
+
+    public abstract void implementAddEdge(int v, int w);
 
     public abstract List<Integer> getNeighbours(int v);
 
