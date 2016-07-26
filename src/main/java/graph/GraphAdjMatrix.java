@@ -1,5 +1,6 @@
 package graph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GraphAdjMatrix extends Graph {
@@ -31,6 +32,12 @@ public class GraphAdjMatrix extends Graph {
 
     @Override
     public List<Integer> getNeighbours(int v) {
-        return null;
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        for (int i = 0; i < getNumVertices(); i++) {
+            if (adjMatrix[v][i] != 0) {
+                result.add(i);
+            }
+        }
+        return result;
     }
 }

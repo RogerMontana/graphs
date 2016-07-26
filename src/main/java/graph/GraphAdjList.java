@@ -20,6 +20,6 @@ public class GraphAdjList extends Graph {
 	}
 
 	public List<Integer> getNeighbours(int v) {
-		return null;
+		return new ArrayList<Integer>(adjListMap.get(v));
 	}
 }
