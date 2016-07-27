@@ -1,11 +1,16 @@
 package graph;
 
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class GraphAdjMatrix extends Graph {
 
     private int[][] adjMatrix;
+    private int V;
+    private int E;
 
     public void implementAddEdge(int v, int w) {
         adjMatrix[v][w] = 1;
@@ -39,5 +44,42 @@ public class GraphAdjMatrix extends Graph {
             }
         }
         return result;
+    }
+
+    // return list of neighbors of v
+    public Iterable<Integer> getNeighborsIterable(int v) {
+        return new AdjIterator(v);
+    }
+
+    private class AdjIterator implements Iterator<Integer>, Iterable<Integer> {
+        private int v;
+        private int w = 0;
+
+        AdjIterator(int v) {
+            this.v = v;
+        }
+
+        public Iterator<Integer> iterator() {
+            return this;
+        }
+
+        public boolean hasNext() {
+            while (w < V) {
+                if (adjMatrix[v][w] == 1) return true;
+                w++;
+            }
+            return false;
+        }
+
+        public Integer next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return w++;
+        }
+
+        public void remove()  {
+            throw new UnsupportedOperationException();
+        }
     }
 }

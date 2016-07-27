@@ -22,4 +22,15 @@ public class GraphAdjList extends Graph {
 	public List<Integer> getNeighbours(int v) {
 		return new ArrayList<Integer>(adjListMap.get(v));
 	}
+
+	public List<Integer> getDistance(int v) {
+		List<Integer> twoHop = new ArrayList<Integer>();
+		List<Integer> oneHop = adjListMap.get(v);
+		for (Integer vertex : oneHop) {
+			getNeighbours(vertex);
+
+		}
+		return new ArrayList<Integer>();
+		
+	}
 }
